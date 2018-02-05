@@ -1,4 +1,3 @@
-
 set nocompatible              " required
 filetype off                  " required
 
@@ -29,6 +28,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -96,10 +96,12 @@ EOF
 let python_highlight_all=1
 syntax on
 
-if has('gui_running')
+if has('gui_running') " 'gui_running' is set, for instance, when you execute GVim
   set background=dark
   colorscheme solarized
 else
+  set t_Co=256
+  set background=dark
   colorscheme zenburn
 endif
 
@@ -118,4 +120,13 @@ let g:easytags_file = '~/.vim/tags'
 let g:easytags_on_cursorhold=0
 let g:easytags_auto_update=0
 let g:easytags_auto_highlight=0
+
+" GitHub-flavoured MarkDown (mostly for my GitHub repos)
+" Uses Python Grip, which makes a request to GitHub's API and may require auth.
+let vim_markdown_preview_github=0
+let vim_markdown_preview_hotkey='C-a'
+let vim_markdown_preview_browser='firefox'
+
 let g:easytags_async=1
+
+
